@@ -1,0 +1,61 @@
+\documentclass{book}
+
+\usepackage{tikzpagelayout}
+\usepackage{layout}
+\usepackage{lipsum}
+
+\def\markareas{%
+\tikz[remember picture,overlay] {%
+    \draw [blue,line width=1cm]
+        (current page.south west) rectangle
+        (current page.north east)
+   ;
+    \draw [green]
+        (current page textarea.south west) rectangle
+        (current page textarea.north east)
+   ;
+    \draw [yellow]
+        (current page marginpar area.south west) rectangle
+        (current page marginpar area.north east)
+   ;
+    \draw [red]
+        (current page header area.south west) rectangle
+        (current page header area.north east)
+   ;
+    \draw [orange]
+        (current page footer area.south west) rectangle
+        (current page footer area.north east)
+   ;
+}%
+}
+\begin{document}
+\layout
+\frontmatter
+
+Test\markareas \marginpar{\lipsum[2-3]}
+test test test test test test test test test test
+test test test test test test test test test test
+test test test test test test test test test test
+\lipsum[1-5]
+Test
+\marginpar{\lipsum[2-3]}
+\markareas
+\lipsum[1-4]
+\lipsum
+
+\layout
+\frontmatter
+
+Test\markareas \marginpar{\lipsum[2-3]}
+test test test test test test test test test test
+test test test test test test test test test test
+test test test test test test test test test test
+\lipsum[1-5]
+Test
+\marginpar{\lipsum[2-3]}
+\markareas
+\lipsum[1-4]
+\lipsum
+
+\end{document}
+
