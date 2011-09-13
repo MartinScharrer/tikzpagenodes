@@ -32,8 +32,8 @@
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\def\csname pgf@sh@nt@current page textarea\endcsname{{1}{0}{0}{1}{0pt}{0pt}}
-\expandafter\def\csname pgf@sh@pi@current page textarea\endcsname{pgfpageorigin}
+\expandafter\let\csname pgf@sh@nt@current page textarea\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
+\expandafter\let\csname pgf@sh@pi@current page textarea\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 
 
 
@@ -55,8 +55,8 @@
         \fi
     }%
 }
-\expandafter\def\csname pgf@sh@nt@current page marginpar area\endcsname{{1}{0}{0}{1}{0pt}{0pt}}
-\expandafter\def\csname pgf@sh@pi@current page marginpar area\endcsname{pgfpageorigin}
+\expandafter\let\csname pgf@sh@nt@current page marginpar area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
+\expandafter\let\csname pgf@sh@pi@current page marginpar area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 
 
 
@@ -65,8 +65,8 @@
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top+\headsep}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top+\headsep+\headheight}}%
 }
-\expandafter\def\csname pgf@sh@nt@current page header area\endcsname{{1}{0}{0}{1}{0pt}{0pt}}
-\expandafter\def\csname pgf@sh@pi@current page header area\endcsname{pgfpageorigin}
+\expandafter\let\csname pgf@sh@nt@current page header area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
+\expandafter\let\csname pgf@sh@pi@current page header area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 
 
 
@@ -75,9 +75,8 @@
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top-\textheight-\footskip}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top-\textheight-\footskip+\headheight}}%
 }
-\expandafter\def\csname pgf@sh@nt@current page footer area\endcsname{{1}{0}{0}{1}{0pt}{0pt}}
-\expandafter\def\csname pgf@sh@pi@current page footer area\endcsname{pgfpageorigin}
-
+\expandafter\let\csname pgf@sh@nt@current page footer area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
+\expandafter\let\csname pgf@sh@pi@current page footer area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 
 
 
