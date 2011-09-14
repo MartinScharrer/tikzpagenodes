@@ -64,19 +64,13 @@
 %    \begin{macrocode}
 \expandafter\def\csname pgf@sh@ns@current page marginpar area\endcsname{rectangle}
 \expandafter\def\csname pgf@sh@np@current page marginpar area\endcsname{%
-    \def\southwest{%
-        \ifoddpageoroneside
-            \pgfpoint{\current@textarea@left+\textwidth+\marginparsep}{\paperheight-\current@textarea@top-\textheight}%
-        \else
-            \pgfpoint{\current@textarea@left-\marginparsep}{\paperheight-\current@textarea@top-\textheight}%
-        \fi
+    \def\southwest{\pgfpoint
+        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep\else-\marginparsep\fi}%
+        {\paperheight-\current@textarea@top-\textheight}%
     }%
-    \def\northeast{%
-        \ifoddpageoroneside
-            \pgfpoint{\current@textarea@left+\textwidth+\marginparsep+\marginparwidth}{\paperheight-\current@textarea@top}%
-        \else
-            \pgfpoint{\current@textarea@left-\marginparsep-\marginparwidth}{\paperheight-\current@textarea@top}%
-        \fi
+    \def\northeast{\pgfpoint
+        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep+\marginparwidth\else-\marginparsep-\marginparwidth\fi}%
+        {\paperheight-\current@textarea@top}%
     }%
 }
 \expandafter\let\csname pgf@sh@nt@current page marginpar area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
