@@ -1,18 +1,21 @@
-\documentclass{book}
+\documentclass[twoside,letterpaper]{report}
+%\pdfpageheight=\paperheight
+%\pdfpagewidth=\paperwidth
+\usepackage[showframe,pass]{geometry}
+\usepackage{layout}
 
 \usepackage{tikzpagelayout}
-\usepackage{layout}
 \usepackage{lipsum}
 
 \def\markareas{%
-\tikz[remember picture,overlay] {%
-    \draw [blue,line width=1cm]
+\tikz[remember picture,overlay,line width=1mm, semitransparent] {%
+    \draw [blue,line width=2mm]
         (current page.south west) rectangle
         (current page.north east)
    ;
     \draw [green]
-        (current page textarea.south west) rectangle
-        (current page textarea.north east)
+        (current page text area.south west) rectangle
+        (current page text area.north east)
    ;
     \draw [yellow]
         (current page marginpar area.south west) rectangle
@@ -28,34 +31,27 @@
    ;
 }%
 }
+
 \begin{document}
-\layout
-\frontmatter
 
+Test\markareas \marginpar{\lipsum[2]}
+test test test test test test test test test test
+test test test test test test test test test test
+test test test test test test test test test test
+\lipsum[1-4]
+Test
 Test\markareas \marginpar{\lipsum[2-3]}
 test test test test test test test test test test
 test test test test test test test test test test
 test test test test test test test test test test
 \lipsum[1-5]
 Test
-\marginpar{\lipsum[2-3]}
+\marginpar{\lipsum[2]}
 \markareas
 \lipsum[1-4]
 \lipsum
 
+\clearpage
 \layout
-\frontmatter
-
-Test\markareas \marginpar{\lipsum[2-3]}
-test test test test test test test test test test
-test test test test test test test test test test
-test test test test test test test test test test
-\lipsum[1-5]
-Test
-\marginpar{\lipsum[2-3]}
-\markareas
-\lipsum[1-4]
-\lipsum
-
 \end{document}
 
