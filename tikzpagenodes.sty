@@ -47,23 +47,29 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% \subsection{Node Definition Macro}
+% Most required macros can be |\let| to the |current page| node.
+%    \begin{macrocode}
+\def\@newtikzpagenode#1{%
+    \expandafter\let\csname pgf@sh@ns@#1\expandafter\endcsname\csname pgf@sh@ns@current page\endcsname
+    \expandafter\let\csname pgf@sh@nt@#1\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
+    \expandafter\let\csname pgf@sh@pi@#1\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
+    \expandafter\def\csname pgf@sh@np@#1\endcsname
+}
+%    \end{macrocode}
 %
 % \subsection{Current Page Text Area Node}
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page text area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page text area\endcsname{%
+\@newtikzpagenode{current page text area}{%
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page text area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page text area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %
 % \subsection{Current Page Marginpar Area Node}
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page marginpar area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page marginpar area\endcsname{%
+\@newtikzpagenode{current page marginpar area}{%
     \def\southwest{\pgfpoint
         {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep\else-\marginparsep\fi}%
         {\paperheight-\current@textarea@top-\textheight}%
@@ -73,82 +79,59 @@
         {\paperheight-\current@textarea@top}%
     }%
 }
-\expandafter\let\csname pgf@sh@nt@current page marginpar area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page marginpar area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %
 % \subsection{Current Page Header Area Node}
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page header area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page header area\endcsname{%
+\@newtikzpagenode{current page header area}{%
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top+\headsep}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top+\headsep+\headheight}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page header area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page header area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %
 % \subsection{Current Page Footer Area Node}
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page footer area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page footer area\endcsname{%
+\@newtikzpagenode{current page footer area}{%
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top-\textheight-\footskip}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\textwidth}{\paperheight-\current@textarea@top-\textheight-\footskip+\headheight}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page footer area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page footer area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 % \subsection{Current Page Column Areas}
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page column 1 area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page column 1 area\endcsname{%
+\@newtikzpagenode{current page column 1 area}{%
     \def\southwest{\pgfpoint{\current@textarea@left}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+\columnwidth}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page column 1 area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page column 1 area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page column 2 area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page column 2 area\endcsname{%
+\@newtikzpagenode{current page column 2 area}{%
     \def\southwest{\pgfpoint{\current@textarea@left+\columnwidth+\columnsep}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+2\columnwidth+\columnsep}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page column 2 area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page column 2 area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page column 3 area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page column 3 area\endcsname{%
+\@newtikzpagenode{current page column 3 area}{%
     \def\southwest{\pgfpoint{\current@textarea@left+2\columnwidth+2\columnsep}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+3\columnwidth+2\columnsep}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page column 3 area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page column 3 area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page column 4 area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page column 4 area\endcsname{%
+\@newtikzpagenode{current page column 4 area}{%
     \def\southwest{\pgfpoint{\current@textarea@left+3\columnwidth+3\columnsep}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+4\columnwidth+3\columnsep}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page column 4 area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page column 4 area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
 %    \begin{macrocode}
-\expandafter\def\csname pgf@sh@ns@current page column 5 area\endcsname{rectangle}
-\expandafter\def\csname pgf@sh@np@current page column 5 area\endcsname{%
+\@newtikzpagenode{current page column 5 area}{%
     \def\southwest{\pgfpoint{\current@textarea@left+4\columnwidth+4\columnsep}{\paperheight-\current@textarea@top-\textheight}}%
     \def\northeast{\pgfpoint{\current@textarea@left+5\columnwidth+4\columnsep}{\paperheight-\current@textarea@top}}%
 }
-\expandafter\let\csname pgf@sh@nt@current page column 5 area\expandafter\endcsname\csname pgf@sh@nt@current page\endcsname
-\expandafter\let\csname pgf@sh@pi@current page column 5 area\expandafter\endcsname\csname pgf@sh@pi@current page\endcsname
 %    \end{macrocode}
 %
