@@ -1,8 +1,9 @@
 \documentclass[twoside,letterpaper]{report}
 %\pdfpageheight=\paperheight
 %\pdfpagewidth=\paperwidth
-\usepackage[showframe,pass]{geometry}
+\usepackage[showframe]{geometry}
 \usepackage{layout}
+\usepackage{multicol}
 
 \usepackage{tikzpagenodes}
 \usepackage{lipsum}
@@ -16,6 +17,11 @@
     \draw [green]
         (current page text area.south west) rectangle
         (current page text area.north east)
+   ;
+   \foreach \COL in {1,...,\csname col@number\endcsname}
+    \draw [pink]
+        (current page column \COL\space area.south west) rectangle
+        (current page column \COL\space area.north east)
    ;
     \draw [yellow]
         (current page marginpar area.south west) rectangle
@@ -33,6 +39,7 @@
 }
 
 \begin{document}
+\begin{multicols}{3}
 
 Test\markareas \marginpar{\lipsum[2]}
 test test test test test test test test test test
@@ -52,6 +59,7 @@ Test
 \lipsum
 
 \clearpage
+\end{multicols}
 \layout
 \end{document}
 

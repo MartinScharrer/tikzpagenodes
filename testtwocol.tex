@@ -1,4 +1,4 @@
-\documentclass[twoside,letterpaper]{report}
+\documentclass[twoside,letterpaper,twocolumn]{report}
 %\pdfpageheight=\paperheight
 %\pdfpagewidth=\paperwidth
 \usepackage[showframe,pass]{geometry}
@@ -12,6 +12,11 @@
     \draw [blue,line width=2mm]
         (current page.south west) rectangle
         (current page.north east)
+   ;
+   \foreach \COL in {1,...,\csname col@number\endcsname}
+    \draw [pink]
+        (current page column \COL\space area.south west) rectangle
+        (current page column \COL\space area.north east)
    ;
     \draw [green]
         (current page text area.south west) rectangle
