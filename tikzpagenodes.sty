@@ -77,11 +77,11 @@
 %    \begin{macrocode}
 \@newtikzpagenode{current page marginpar area}{%
     \def\southwest{\pgfpoint
-        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep\else-\marginparsep\fi}%
+        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep\else-\marginparsep-\marginparwidth\fi}%
         {\paperheight-\current@textarea@top-\textheight}%
     }%
     \def\northeast{\pgfpoint
-        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep+\marginparwidth\else-\marginparsep-\marginparwidth\fi}%
+        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep+\marginparwidth\else-\marginparsep\fi}%
         {\paperheight-\current@textarea@top}%
     }%
 }
