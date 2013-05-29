@@ -87,7 +87,11 @@
               -\marginparsep-\marginparwidth
             \fi
           \else
-             +\textwidth+\marginparsep
+            \if@reversemargin
+              -\marginparsep-\marginparwidth
+            \else
+               +\textwidth+\marginparsep
+            \fi
           \fi
 }%
         {\paperheight-\current@textarea@top-\textheight}%
@@ -102,7 +106,11 @@
               -\marginparsep
             \fi
           \else
+            \if@reversemargin
+              -\marginparsep
+            \else
               +\textwidth+\marginparsep+\marginparwidth
+            \fi
           \fi
 }%
         {\paperheight-\current@textarea@top}%
