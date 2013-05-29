@@ -30,8 +30,10 @@
 % \begin{macro}{\currentsidemargin}
 % Expands to the current left side margin, i.e. \Macro\oddsidemargin for odd pages in |twoside| mode and all pages in |oneside| mode
 % or \Macro\evensidemargin for even pages in |twoside| mode.
+% If asymmetric is on, currentsidemargin is allways be evensidemargin.
 %    \begin{macrocode}
-\def\currentsidemargin{\ifoddpageoroneside\oddsidemargin\else\evensidemargin\fi}%
+\def\currentsidemargin{\ifoddpageoroneside\oddsidemargin\else\evensidemargin\fi
+  }%
 %    \end{macrocode}
 % \end{macro}
 %
@@ -77,11 +79,32 @@
 %    \begin{macrocode}
 \@newtikzpagenode{current page marginpar area}{%
     \def\southwest{\pgfpoint
-        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep\else-\marginparsep-\marginparwidth\fi}%
+        {\current@textarea@left
+          \if@mparswitch
+            \ifoddpageoroneside
+              +\textwidth+\marginparsep
+            \else
+              -\marginparsep-\marginparwidth
+            \fi
+          \else
+             +\textwidth+\marginparsep
+          \fi
+}%
         {\paperheight-\current@textarea@top-\textheight}%
     }%
     \def\northeast{\pgfpoint
-        {\current@textarea@left\ifoddpageoroneside+\textwidth+\marginparsep+\marginparwidth\else-\marginparsep\fi}%
+        {
+          \current@textarea@left
+          \if@mparswitch
+            \ifoddpageoroneside
+              +\textwidth+\marginparsep+\marginparwidth
+            \else
+              -\marginparsep
+            \fi
+          \else
+              +\textwidth+\marginparsep+\marginparwidth
+          \fi
+}%
         {\paperheight-\current@textarea@top}%
     }%
 }

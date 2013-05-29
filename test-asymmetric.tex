@@ -1,0 +1,58 @@
+\documentclass[twoside,letterpaper]{report}
+%\pdfpageheight=\paperheight
+%\pdfpagewidth=\paperwidth
+%\reversemarginpar
+\usepackage[showframe,asymmetric,centering,textwidth=10cm,centering]{geometry}
+\usepackage{layout}
+
+\usepackage{tikzpagenodes}
+\usepackage{lipsum}
+
+\def\markareas{%
+\tikz[remember picture,overlay,line width=1mm, semitransparent] {%
+    \draw [blue,line width=2mm]
+        (current page.south west) rectangle
+        (current page.north east)
+   ;
+    \draw [green]
+        (current page text area.south west) rectangle
+        (current page text area.north east)
+   ;
+    \draw [yellow]
+        (current page marginpar area.south west) rectangle
+        (current page marginpar area.north east)
+   ;
+    \draw [red]
+        (current page header area.south west) rectangle
+        (current page header area.north east)
+   ;
+    \draw [orange]
+        (current page footer area.south west) rectangle
+        (current page footer area.north east)
+   ;
+}%
+}
+
+\begin{document}
+
+Test\markareas \marginpar{\lipsum[2]}
+test test test test test test test test test test
+test test test test test test test test test test
+test test test test test test test test test test
+\lipsum[1-2]
+Test
+Test\markareas \marginpar{\lipsum[2-3]}
+test test test test test test test test test test
+test test test test test test test test test test
+test test test test test test test test test test
+\lipsum[1-2]
+Test
+\marginpar{\lipsum[2]}
+\markareas
+\lipsum[1-2]
+
+
+\clearpage
+\layout
+\end{document}
+
