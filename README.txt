@@ -1,9 +1,9 @@
 LaTeX package 'tikzpagenodes'
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Copyright (c) 2011-2016 by Martin Scharrer <martin@scharrer.me>
+Copyright (c) 2011-2022 by Martin Scharrer <martin.scharrer@web.de>
 WWW: http://latex.scharrer.me/
 CTAN: http://www.ctan.org/pkg/tikzpagenodes
-Code repository: https://bitbucket.org/martin_scharrer/tikzpagenodes
+Code repository: https://github.com/MartinScharrer/tikzpagenodes/
 
 This LaTeX package provides specials PGF/TikZ nodes for the text, marginpar,
 footer and header area of the current page.  They are inspired by the special

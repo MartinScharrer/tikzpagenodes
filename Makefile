@@ -1,6 +1,6 @@
 CONTRIBUTION  = tikzpagenodes
 NAME          = Martin Scharrer
-EMAIL         = martin@scharrer-online.de
+EMAIL         = martin.scharrer@web.de
 DIRECTORY     = /macros/latex/contrib/${CONTRIBUTION}
 LICENSE       = free
 FREEVERSION   = lppl
